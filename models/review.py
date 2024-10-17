@@ -1,6 +1,8 @@
+from dataclasses import dataclass
 from datetime import datetime
 
-class Reviews():
+@dataclass
+class Review():
     rating : int
     comment : str
     date : datetime

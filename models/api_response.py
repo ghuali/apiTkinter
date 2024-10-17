@@ -1,7 +1,8 @@
+from dataclasses import dataclass
 from itertools import product
 
-
-class API_response():
+@dataclass
+class APIresponse():
     products : list[product]
     total : float
     skip : int
