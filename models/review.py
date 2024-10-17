@@ -2,9 +2,9 @@ from dataclasses import dataclass
 from datetime import datetime
 
 @dataclass
-class Review():
+class Review:
     rating : int
     comment : str
     date : datetime
-    reviewerName : str
-    reviewerEmail : str
+    reviewer_name : str
+    reviewer_email : str

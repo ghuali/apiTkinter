@@ -1,34 +1,31 @@
-from importlib.metadata import metadata
+from dataclasses import dataclass
 
 from models.dimensions import Dimensions
-from review import Review
-from meta import Meta
+from models.review import Review
+from models.meta import Meta
 from typing import List
-from dataclasses import dataclass, field
-
 
 @dataclass
-class Product():
+class Product:
     id : int
     title : str
     description : str
     category : str
     price : float
-    discount_percentage : float = field(metadata={'alias':'discountPercentage'})
+    discount_percentage : float
     rating : float
     stock : int
     tags : List[str]
-    brand : str
     sku : str
     weight : int
-    dimension : List[Dimensions]
-    warrantly_info : str = field(metadata={'alias':'warrantyInformation'})
-    shipping_info : str = field(metadata={'alias':'shippingInfo'})
-    availability_status : str = field(metadata={'alias':'availabilityStatus'})
+    dimensions : Dimensions
+    warranty_information : str
+    shipping_information : str
+    availability_status : str
     reviews : List[Review]
-    returnPolicy : str
-    minimunOrder : int
-    meta : List[Meta]
-    images : str
+    return_policy : str
+    minimum_order_quantity : int
+    meta : Meta
+    images : List[str]
     thumbnail : str
     brand : str = None

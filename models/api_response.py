@@ -1,9 +1,11 @@
 from dataclasses import dataclass
-from itertools import product
+from typing import List
+
+from models.product import Product
 
 @dataclass
-class APIresponse():
-    products : list[product]
-    total : float
+class APIResponse:
+    products : List[Product]
+    total : int
     skip : int
     limit : int

@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from datetime import datetime
 
 @dataclass
-class Meta():
-    createdAt : datetime
-    updatedAt : datetime
+class Meta:
+    created_at : datetime
+    updated_at : datetime
     barcode : str
-    qrcode : str
+    qr_code : str

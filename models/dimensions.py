@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Dimensions():
+class Dimensions:
     width : float
     height : float
     depth : float
