@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Label,Canvas
+from tkinter import Label, Canvas, ttk
 
 import requests
 from PIL import Image, ImageTk
@@ -9,6 +9,7 @@ indice=0
 
 
 def mostrar_productos(data):
+    global indice
     root = tk.Tk()
     #for producto in data.products:
     #    label = tk.Label(root, text=producto.title)
@@ -30,6 +31,10 @@ def mostrar_productos(data):
     stock = canvas.create_text(50,275,anchor="nw", font=('inter', 15), text=data.products[indice].stock)
     compra_llega = canvas.create_text(740,275,anchor="ne", font=('inter', 15), text=data.products[indice].shipping_information)
     sku = canvas.create_text(375,450,anchor="center", font=('inter', 15), text=data.products[indice].sku)
+    boton1 = ttk.Button(root, text="Siguiente", command=siguiente)
+    boton1.place(x=600, y=450, anchor="center", width=150)
+    boton2 = ttk.Button(root, text="Anterior", command=anterior)
+    boton2.place(x=200, y=450, anchor="center", width=150)
 
     r = requests.get(data.products[indice].thumbnail,stream=True)
     img_data = r.raw
@@ -38,10 +43,24 @@ def mostrar_productos(data):
     canvas.create_image(0,0,image=img_tk,anchor="nw")
 
 
-
-
     root.mainloop()
 
-    # r=request.get(URL,stream=True)
-    #img = image.open.rrau
-    #imagettk = Imagettk(img)
+
+def siguiente():
+    global indice
+
+    if indice < 30 -1:
+        indice += 1
+        print(indice)
+
+
+def anterior():
+    global indice
+
+    if indice > 0:
+        indice -= 1
+        print(indice)
+
+
+
+
