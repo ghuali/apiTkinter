@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Canvas, ttk
+from tkinter import Canvas, ttk, Label
 import requests
 from PIL import Image, ImageTk
 
@@ -17,11 +17,13 @@ def mostrar_productos(productos_data):
     root.resizable(width=False, height=False)
     root.geometry("751x600")
 
-    search_label = ttk.Label(root, text="Buscar por título:",font=('inter',15))
+    search_label = ttk.Label(root, text="Buscar:",font=('inter'))
     search_label.pack(pady=10)
     search_entry = ttk.Entry(root, width=50)
     search_entry.pack(pady=5)
     search_button = ttk.Button(root, text="Buscar", command=buscar_producto)
+    search_button.pack(pady=5)
+    search_button = ttk.Button(root, text="Listado", command=mostrar_listado)
     search_button.pack(pady=5)
 
     canvas = tk.Canvas(root, width=530, height=751, background='Orange')
@@ -37,7 +39,7 @@ def mostrar_productos(productos_data):
     warranty = canvas.create_text(50, 275, anchor="nw", font=('inter', 15))
     stock = canvas.create_text(50, 325, anchor="nw", font=('inter', 15))
     compra_llega = canvas.create_text(740, 275, anchor="ne", font=('inter', 15))
-    sku = canvas.create_text(400, 450, anchor="center", font=('inter', 15))
+    sku = canvas.create_text(400, 500, anchor="center", font=('inter', 15))
 
     boton_siguiente = ttk.Button(root, text="Siguiente", command=siguiente)
     boton_siguiente.place(x=600, y=500, anchor="center", width=150)
@@ -92,7 +94,6 @@ def buscar_producto():
 
     contador = 0
 
-    # Recorremos la lista de productos
     for producto in data.products:
         if busqueda in producto.title.lower():
             indice = contador
@@ -100,9 +101,16 @@ def buscar_producto():
             return
         contador += 1
 
+def mostrar_listado():
+    listado_ventana = tk.Tk()
+
+    global indice
+    buscar = search_entry.get().lower()
+
+    for producto in data.products:
+        if buscar in producto.title.lower():
+            label =ttk.Label(text=producto.title)
+            label.pack()
 
 
-
-
-
-
+    listado_ventana.mainloop()
