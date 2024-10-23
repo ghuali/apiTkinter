@@ -3,13 +3,13 @@ from tkinter import Canvas, ttk
 import requests
 from PIL import Image, ImageTk
 
-indice = 0  # Define el índice global para navegar entre productos
-data = None  # Definir una variable global para 'data'
+indice = 0
+data = None
 
 def mostrar_productos(productos_data):
     global data, root, canvas, nombre, tags, descripcion, categoria, marca, precio, rating, warranty, stock, compra_llega, sku, img_tk, search_entry
 
-    # Asignamos 'productos_data' a la variable global 'data'
+
     data = productos_data
 
     root = tk.Tk()
@@ -45,13 +45,13 @@ def mostrar_productos(productos_data):
     boton_anterior = ttk.Button(root, text="Anterior", command=anterior)
     boton_anterior.place(x=200, y=500, anchor="center", width=150)
 
-    mostrar_informacion_producto()  # Muestra el primer producto al iniciar
+    mostrar_informacion_producto()
 
     root.mainloop()
 
 def siguiente():
     global indice
-    if indice < len(data.products) - 1:  # Aumenta el índice si no es el último producto
+    if indice < len(data.products) - 1:
         indice += 1
         mostrar_informacion_producto()
 
@@ -88,19 +88,18 @@ def mostrar_informacion_producto():
 
 def buscar_producto():
     global indice
-    busqueda = search_entry.get().lower()  # Obtiene el texto ingresado y lo convierte a minúsculas
+    busqueda = search_entry.get().lower()
 
-    contador = 0  # Inicializamos un contador manualmente
+    contador = 0
 
     # Recorremos la lista de productos
     for producto in data.products:
         if busqueda in producto.title.lower():
-            indice = contador  # Asignamos el valor del contador al índice
+            indice = contador
             mostrar_informacion_producto()
             return
-        contador += 1  # Incrementamos el contador manualmente en cada iteración
+        contador += 1
 
-    print("Producto no encontrado")
 
 
 
