@@ -71,7 +71,7 @@ def mostrar_informacion_producto():
     canvas.itemconfig(descripcion, text=producto.description)
     canvas.itemconfig(categoria, text=producto.category)
     canvas.itemconfig(marca, text=producto.brand)
-    canvas.itemconfig(precio, text=producto.price)
+    canvas.itemconfig(precio, text=f"{producto.price}€")
     canvas.itemconfig(rating, text=producto.rating)
     canvas.itemconfig(warranty, text=producto.warranty_information)
     canvas.itemconfig(stock, text=producto.stock)
