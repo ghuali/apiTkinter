@@ -17,9 +17,9 @@ def mostrar_productos(productos_data):
     root.resizable(width=False, height=False)
     root.geometry("751x600")
 
-    search_label = tk.Label(root, text="Buscar por título:",font=('inter',15))
+    search_label = ttk.Label(root, text="Buscar por título:",font=('inter',15))
     search_label.pack(pady=10)
-    search_entry = tk.Entry(root, width=50)
+    search_entry = ttk.Entry(root, width=50)
     search_entry.pack(pady=5)
     search_button = ttk.Button(root, text="Buscar", command=buscar_producto)
     search_button.pack(pady=5)
