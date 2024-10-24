@@ -103,17 +103,25 @@ def buscar_producto():
 
 def mostrar_listado():
     listado_ventana = tk.Tk()
-    listado_ventana.title("busqueda intensa brrrrr")
+    listado_ventana.title("Resultados de búsqueda")
 
-    global indice
     buscar = search_entry.get().lower()
 
+    contador = 0
     for producto in data.products:
         if buscar in producto.title.lower():
-            label = ttk.Label(listado_ventana,text=producto.title)
+            label = ttk.Label(listado_ventana, text=producto.title)
             label.pack()
-            boton = ttk.Button(listado_ventana,text="seleccionar",command=buscar_producto)
+
+            boton = ttk.Button(listado_ventana, text="Seleccionar", command=lambda nuevo=contador: seleccionar_producto(nuevo))
             boton.pack()
 
+        contador += 1
 
     listado_ventana.mainloop()
+
+def seleccionar_producto(nuevo):
+
+    global indice
+    indice = nuevo
+    mostrar_informacion_producto()
