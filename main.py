@@ -1,6 +1,10 @@
+from typing import List
+
 import requests
 from models.api_response import APIResponse
 from dataclass_wizard import fromdict
+
+from models.product import Product
 from vistas import mostrar_productos, siguiente
 
 
@@ -9,5 +13,7 @@ def main():
     data_dict = response.json()
     data_obj = fromdict(APIResponse,data_dict)
     mostrar_productos(data_obj)
+
+
 
 main()

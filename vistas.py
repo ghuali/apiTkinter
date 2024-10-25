@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import Canvas, ttk, Label
 import requests
 from PIL import Image, ImageTk
+import weasyprint import HTML
 
 indice = 0
 data = None
@@ -118,6 +119,7 @@ def mostrar_listado():
 
         contador += 1
 
+    boton1 = ttk.Button(listado_ventana, text="generar PDF")
     listado_ventana.mainloop()
 
 def seleccionar_producto(nuevo):
@@ -125,3 +127,23 @@ def seleccionar_producto(nuevo):
     global indice
     indice = nuevo
     mostrar_informacion_producto()
+
+
+def generar_pdf(productos: List[Product]):
+    html = """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Documento PDF</title>
+        <style>
+            h1{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+    """
+
+    html +=
